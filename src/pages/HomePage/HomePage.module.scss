@@ -1,0 +1,65 @@
+/* GameMenu.module.scss */
+
+.menuContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #282c34;
+    color: white;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: #f1f1f1;
+  }
+  
+  .menuItems {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    width: 80%;
+    max-width: 1000px;
+  }
+  
+  .menuItem {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .card {
+    background-color: #3b3f47;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #ffd700;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    color: #f0f0f0;
+  }
+  
+  .card:hover h2 {
+    color: #fff;
+  }
+  
+  .card:hover p {
+    color: #e0e0e0;
+  }
+  

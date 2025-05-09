@@ -1,42 +1,54 @@
-# Аркадные игры (Breakout, Snake, Flappy Bird)
+# React + TypeScript + Vite
 
-Этот проект включает три классические аркадные игры, реализованные с использованием **React** и **HTML5 Canvas**. Каждая игра предлагает увлекательный игровой процесс с элементами управления с клавиатуры.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Игры
+Currently, two official plugins are available:
 
-### 1. **Breakout**
-   - **Механика**: Игрок управляет платформой для того, чтобы отбить мяч, который разрушает блоки. Цель — разрушить все блоки, не позволив мячу упасть за пределы экрана.
-   - **Особенности**:
-     - Управление стрелками для перемещения платформы.
-     - Возможность ставить игру на паузу и перезапускать её после завершения.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-### 2. **Snake**
-   - **Механика**: Игрок управляет змеёй, которая растёт по мере того, как она поедает пищу. Нужно избегать столкновений с границами экрана и с собственным телом змеи.
-   - **Особенности**:
-     - Управление с помощью стрелок.
-     - Игра усложняется с увеличением длины змеи.
+## Expanding the ESLint configuration
 
-### 3. **Flappy Bird**
-   - **Механика**: Игрок управляет птицей, которая должна пролетать между препятствиями, не касаясь их. Каждое успешное прохождение между препятствиями приносит очки.
-   - **Особенности**:
-     - Нажатие клавиши для подъёма птицы.
-     - Игра ускоряется с каждым уровнем.
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## Технологии
-Проект использует следующие технологии:
-- **React** — для создания компонентов и управления состоянием.
-- **HTML5 Canvas** — для рисования графики и отрисовки элементов игры.
-- **React Router** — для навигации между играми.
-- **CSS Modules** — для стилизации интерфейса.
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
-## Как играть
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-- **Breakout**: Управляйте платформой с помощью стрелок влево и вправо, разрушайте блоки, избегая падения мяча.
-- **Snake**: Используйте стрелки для управления змеёй, избегайте столкновений и собирайте пищу.
-- **Flappy Bird**: Нажимайте клавишу для подъёма птицы, избегайте препятствий и зарабатывайте очки.
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-## Структура проекта
-
-- **PongGame.tsx** — компоненты для игры Breakout.
-- **SnakeGame.tsx** — компоненты для игры Snake.
-- **FlappyBird.tsx** — компоненты для игры Flappy Bird.
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
+```
